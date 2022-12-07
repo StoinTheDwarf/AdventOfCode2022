@@ -1,0 +1,35 @@
+# Opening file
+file_open = open("day2text.txt")
+day2_text = file_open.read()
+file_open.close()
+
+# Calculating points
+total_points = 0
+game_array = day2_text.split("\n")
+for total in range(0, len(game_array)):
+    line = game_array[total].split(" ")
+    if line[0] == "A":
+        if line[1] == "X":
+            total_points = total_points + 3
+        if line[1] == "Y":
+            total_points = total_points + 4
+        if line[1] == "Z":
+            total_points = total_points + 8
+
+    if line[0] == "B":
+        if line[1] == "X":
+            total_points = total_points + 1
+        if line[1] == "Y":
+            total_points = total_points + 5
+        if line[1] == "Z":
+            total_points = total_points + 9
+
+    if line[0] == "C":
+        if line[1] == "X":
+            total_points = total_points + 2
+        if line[1] == "Y":
+            total_points = total_points + 6
+        if line[1] == "Z":
+            total_points = total_points + 7
+
+print(total_points)
