@@ -1,0 +1,17 @@
+open_file = open("day4text.txt")
+day4text = open_file.read()
+open_file.close()
+
+line_array = day4text.split("\n")
+counter = 0
+
+for line_loop in range(0, len(line_array)):
+    range_array = line_array[line_loop].split(",")
+    first_val_array = [a for a in range(int(range_array[0].split("-")[0]), int(range_array[0].split("-")[1])+1)]
+    second_val_array = [a for a in range(int(range_array[1].split("-")[0]), int(range_array[1].split("-")[1])+1)]
+    for check_loop in range(0, len(first_val_array)):
+        if first_val_array[check_loop] in second_val_array:
+            counter = counter + 1
+            break
+
+print(counter)
