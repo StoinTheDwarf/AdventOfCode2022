@@ -1,0 +1,26 @@
+open_file = open("day3text.txt")
+day3text = open_file.read()
+open_file.close()
+
+rucksack_array = day3text.split("\n")
+commonality_array = [""]*len(rucksack_array)
+
+for common_loop in range(0, len(rucksack_array)):
+    contents_array = rucksack_array[common_loop].split()
+    # Cutting array in half
+    first_compartment = contents_array[:len(contents_array)//2]
+    second_compartment = contents_array[len(contents_array)//2:]
+    print(first_compartment, second_compartment)
+    for commonality in range(0, len(first_compartment)):
+        for commonality_2 in range(0, len(first_compartment)):
+            if first_compartment[commonality] == second_compartment[commonality_2]:
+                commonality_array[common_loop] = first_compartment[commonality]
+    # Calculating priorities
+    priorities = 0
+    for priority_loop in range(0, len(rucksack_array)):
+        print(commonality_array[priority_loop])
+        if 65 <= ord(commonality_array[priority_loop]) <= 90:
+            priorities = priorities + ord(commonality_array[priority_loop])-38
+        elif 97 <= ord(commonality_array[priority_loop]) <= 122:
+            priorities = priorities + ord(commonality_array[priority_loop])-96
+    print(priorities)
