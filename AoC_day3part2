@@ -1,0 +1,23 @@
+open_file = open("day3text.txt")
+day3text = open_file.read()
+open_file.close()
+
+priorities = 0
+
+array_of_lines = day3text.split("\n")
+for rucksack_loop in range(0, int(len(array_of_lines)/3)):
+
+    compartment1 = list(array_of_lines[rucksack_loop*3])
+    compartment2 = list(array_of_lines[rucksack_loop*3+1])
+    compartment3 = list(array_of_lines[rucksack_loop*3+2])
+    print(compartment1, "\n", compartment2, "\n", compartment3)
+
+    for commonality in range(0, len(compartment1)):
+        if compartment1[commonality] in compartment2 and compartment1[commonality] in compartment3:
+            print(compartment1[commonality], "\n")
+            if 65 <= ord(compartment1[commonality]) <= 90:
+                priorities = priorities + ord(compartment1[commonality]) - 38
+            elif 97 <= ord(compartment1[commonality]) <= 122:
+                priorities = priorities + ord(compartment1[commonality]) - 96
+            break
+print(priorities)
